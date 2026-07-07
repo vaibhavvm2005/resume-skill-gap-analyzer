@@ -1,0 +1,31 @@
+import re
+
+def preprocess_text(text: str) -> str:
+    """
+    Clean and normalize text.
+    """
+
+    # Convert to lowercase
+    text = text.lower()
+
+    # Remove special characters
+    text = re.sub(r'[^a-zA-Z0-9,\s]', '', text)
+
+    # Remove extra spaces
+    text = " ".join(text.split())
+
+    return text
+
+
+def preprocess_skills(skills: list[str]) -> list[str]:
+    """
+    Clean each skill in the list.
+    """
+
+    cleaned_skills = []
+
+    for skill in skills:
+        skill = preprocess_text(skill)
+        cleaned_skills.append(skill)
+
+    return cleaned_skills 
